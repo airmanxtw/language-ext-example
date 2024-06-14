@@ -23,6 +23,12 @@ public class Math
         Fail: e => Error.New("計算失敗,且 Log 失敗")
     ));
 
+    public static Eff<Lst<int>> GetLst() => Eff(() => List(1, 2, 3, 4, 5));
+
+    public void Test()
+    {
+        var result = GetLst().Bind(v => v.Map(AddAndDouble).Sequence());
+    }
 
 
 
