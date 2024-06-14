@@ -24,6 +24,21 @@ public class MathTest
     }
 
     [TestMethod]
+    public void TestLstToDoubleSucc()
+    {
+        // source: [1, 2, 3, 4, 5, 6, 7, 10]
+        var result = DataSource.GetNumList()
+                    .Bind(t => Math.NumListToDouble(t).ToEff())
+                    .Run().ToEither().Value();
+
+        // expect: [2, 4, 6, 8, 10, 12, 14, 20]
+        var expect = new List<int>() { 2, 4, 6, 8, 10, 12, 14, 20 };
+
+        CollectionAssert.AreEqual(expect, result.ToList());
+        //Assert.IsTrue(expect.SequenceEqual([.. result]));
+    }
+
+    [TestMethod]
     public void TestValue()
     {
         var result = Math.Add(-1, 1).Value();
