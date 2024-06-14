@@ -10,6 +10,6 @@ public class UnitTest1
     [TestMethod]
     public void TestMethod1()
     {
-        Math.Add(1, 2).ShouldBeSome(some => Assert.AreEqual(3, some));       
+        Math.Add(-1, 2).ShouldBeLeft(e => Assert.AreEqual("a and b must be positive", e.Message));
     }
 }
