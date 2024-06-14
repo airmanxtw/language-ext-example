@@ -28,7 +28,7 @@ public class MathTest
     {
         // source: [1, 2, 3, 4, 5, 6, 7, 10]
         var result = DataSource.GetNumList()
-                    .Bind(t => Math.NumListToDouble(t).ToEff())
+                    .Bind(Math.NumListToDoubleEff)
                     .Run().ToEither().Value();
 
         // expect: [2, 4, 6, 8, 10, 12, 14, 20]
