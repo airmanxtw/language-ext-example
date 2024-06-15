@@ -1,4 +1,4 @@
-namespace test_language_ext_example;
+namespace test_language_ext_example.Test;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using language_ext_example.example;
 using LanguageExt;

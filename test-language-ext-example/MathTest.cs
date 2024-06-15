@@ -5,6 +5,8 @@ using LanguageExt;
 using LanguageExt.UnitTesting;
 using LanguageExt.Common;
 using LanguageExt.UnsafeValueAccess;
+using static LanguageExt.Prelude;
+using LanguageExt.ClassInstances;
 
 [TestClass]
 public class MathTest
@@ -32,10 +34,13 @@ public class MathTest
                     .Run().ToEither().Value();
 
         // expect: [2, 4, 6, 8, 10, 12, 14, 20]
-        var expect = new List<int>() { 2, 4, 6, 8, 10, 12, 14, 20 };
+        // var expect = new List<int>() { 2, 4, 6, 8, 10, 12, 14, 20 };
+        Lst<int> expect = List(2, 4, 6, 8, 10, 12, 14, 20);
 
-        CollectionAssert.AreEqual(expect, result.ToList());
+        //CollectionAssert.AreEqual(expect, result.ToList());
         //Assert.IsTrue(expect.SequenceEqual([.. result]));
+
+        Assert.IsTrue(default(EqLst<int>).Equals(expect, result));
     }
 
     [TestMethod]
