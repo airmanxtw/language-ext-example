@@ -4,7 +4,7 @@ using LanguageExt.Common;
 using LanguageExt.Pretty;
 using static LanguageExt.Prelude;
 
-// opint-free style
+// point-free style
 public class Style
 {
     // from DataSource get a number , and add 1 to it, then double it, finally square it
