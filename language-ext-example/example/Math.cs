@@ -14,6 +14,10 @@ public class Math
     public static Either<Error, int> DoubleValue(int a) =>
         guard(a > 0, Error.New("a must be positive")).ToEither().Map(_ => a * 2);
 
+    // * 將數值平方
+    public static Option<int> SquareValue(int a) => Some(a * a);
+
+
     // * 將數值乘以2，數值必須是正數 Eff 版本
     public static Eff<int> DoubleValueEff(int a) => DoubleValue(a).ToEff();
 
