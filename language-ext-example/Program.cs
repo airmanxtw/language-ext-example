@@ -8,3 +8,6 @@ var s = default(Tint).Abs(-1);
 
 
 Console.WriteLine("Hello, World!");
+
+var d=List(1,2,3,4);
+
