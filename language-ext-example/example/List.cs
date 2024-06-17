@@ -25,7 +25,9 @@ public class List
         Option<int>.Some(0),
         (acc, x) => acc.Bind(v => Add(n.At(x), Some(v)))
     );
-    
+
+    public static Func<int[], Option<int>> Sum(Lst<int> d) => curry<Lst<int>, int[], Option<int>>(Sum)(d);
+
 
 
 }
