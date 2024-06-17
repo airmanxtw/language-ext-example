@@ -42,6 +42,26 @@ public class Math
     public static Option<int> Add(Option<int> a, Option<int> b) =>
     a.Bind(a1 => b.Map(b1 => a1 + b1));
 
+    // 多個 Option<int> 相加
+    public static Option<int> AddReduce(params Option<int>[] lst) =>
+    lst.Reduce(Add);
+
+    // 從 Lst<int> 中取出指定 index 的數字相加
+    public static Option<int> LstToSum(Lst<int> lst, params int[] indexs) =>
+    AddReduce(indexs.Select(lst.At).ToArray());
+
+
+
+
+    // 合計相加
+    public static int AddNormal(params int[] lst) => lst.Sum();
+
+    // 從 List<int> 中取出指定 index 的數字相加
+    public static int ListToSum(List<int> data, params int[] indexs) => indexs.Select(i => data[i]).Sum();
+
+
+
+
 
 
 

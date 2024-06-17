@@ -50,4 +50,11 @@ public class MathTest
         Assert.AreEqual(0, result);
     }
 
+    [TestMethod]
+    public void TestAddReduce()
+    {
+        var result = Math.AddReduce(Some(1), Some(2), Some(3), Some(4)).Value();
+        Assert.AreEqual(10, result);
+    }
+
 }
