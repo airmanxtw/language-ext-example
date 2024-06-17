@@ -38,6 +38,10 @@ public class Math
     // * lst裡面的數字都透過 DoubleValue 函數轉換成 兩倍數字 Eff 版本
     public static Eff<Lst<int>> NumListToDoubleEff(Lst<int> lst) => NumListToDouble(lst).ToEff();
 
+    // 兩個 Option<int> 相加    
+    public static Option<int> Add(Option<int> a, Option<int> b) =>
+    a.Bind(a1 => b.Map(b1 => a1 + b1));
+
 
 
 
