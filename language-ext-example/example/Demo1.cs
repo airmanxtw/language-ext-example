@@ -29,13 +29,13 @@ public class Demo1
         return a + b;
     }
     // 求面積
-    public static Option<float> Area(float r) => Pi().Map(x => Square(r)).Flatten();
+    public static Option<float> Area(float r) => Pi().Map(x => Square(x)).Flatten();
 
 
 
-    public static Option<float> Area2(float r) => Pi().Bind(x => Square(r));
+    public static Option<float> Area2(float r) => Pi().Bind(x => Square(x));
 
-    public static Option<float> Area3(float r) => Pi().Map(x => Square2(r));
+    public static Option<float> Area3(float r) => Pi().Map(x => Square2(x));
 
 
  
