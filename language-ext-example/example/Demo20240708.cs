@@ -63,6 +63,13 @@ public class Demo20240708
 
 
 
+    /// Applies a series of functions to an input value, starting with the initial value.
+    public static int MyPipe(int a, params Func<int, int>[] fs) => fs.Fold(a, (x, f) => f(x));
+
+
+
+
+
 
 
     public static int Func1(int a) => pipe(a, Add, Dob);
