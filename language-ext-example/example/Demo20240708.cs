@@ -38,6 +38,30 @@ public class Demo20240708
 
     #endregion
 
+    #region curry 補充
+
+    public static string FindStud(string db, string studNo) => $"{db}-{studNo}";
+
+    //* without curry function
+    public static Func<string, Func<string, string>> FindStudCurry1 =>
+    (string db) => (string studNo) => FindStud(db, studNo);
+
+    //* with curry function
+    public static Func<string, Func<string, string>> FindStudCurry2 =>
+    curry<string, string, string>(FindStud);
+
+    public static Func<string, string> FindStudFromDB1 =>
+    (string studNo) => FindStudCurry1("DB1.SERVER")(studNo);
+
+    public static Func<string, string> FindStudFromDB2 => (string studNo) =>
+    FindStudCurry2("DB2.SERVER")(studNo);
+
+    // Find stud from DB1
+    public static string DoFindStud(string studNo) => pipe(studNo, FindStudFromDB1);
+
+    #endregion
+
+
 
 
 
