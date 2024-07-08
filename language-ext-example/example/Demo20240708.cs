@@ -21,6 +21,10 @@ public class Demo20240708
 
     public static double Muti(double a, int b) => a * b;
 
+    public Func<int, double> Muti3 = curry<double, int, double>(Muti)(3.0);
+
+    public Func<int, double> Muti4 = curry<double, int, double>(Muti)(4.0);
+
 
     #region curry and flip 補齊
     public static double Func00(int a) => pipe(a, v => Muti(2.0, a));
