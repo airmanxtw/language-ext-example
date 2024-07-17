@@ -13,15 +13,14 @@ public class Demo20240724Test
     public void TestMethod1()
     {
         Demo20240717.Undivisible(7, 6).ShouldBeRight(v => Assert.AreEqual(6, v));
-        //Assert.AreEqual(true,true);
+        
     }
 
     [TestMethod]
     public void TestMethod2()
     {
        
-        Assert.AreEqual(false,Demo20240717.Prime(8)  );
-        //CollectionAssert.AreEqual(exp, result.ma);
+        Assert.AreEqual(false,Demo20240717.Prime(8)  );        
 
     }
 
