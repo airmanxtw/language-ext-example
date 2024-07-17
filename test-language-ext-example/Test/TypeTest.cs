@@ -5,6 +5,7 @@ using LanguageExt;
 using LanguageExt.UnitTesting;
 using LanguageExt.ClassInstances;
 
+
 [TestClass]
 public class TypeTest
 {
