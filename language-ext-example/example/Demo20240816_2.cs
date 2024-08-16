@@ -30,6 +30,8 @@ public class Demo20240816_2
     .ValueUnsafe()
     .Result;
 
+
+    // 這個很好用
     public int GetAllFileTotalBytes3(string[] paths)=>
     paths.Map(GetFile).Map(v => v.Run().Match(Succ: c => c.Length, Fail: _ => 0)).Sum();
     
