@@ -28,7 +28,4 @@ public class Demo20240816
     from b1 in GetB(b)
     select Add(a1, b1);
 
-
-
-
 }
