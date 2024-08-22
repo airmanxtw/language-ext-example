@@ -42,6 +42,9 @@ public class Demo20240822
     public static IEnumerable<ClassStudent> GetClassStudents3() =>
     Students().Map(s => new ClassStudent(s.ClassNo, Classes().Find(c => c.ClassNo == s.ClassNo)?.ClassName ?? string.Empty, s.StudentName));
 
+    public static IEnumerable<ClassStudent> GetClassStudents4() =>
+    Students().GroupJoin(Classes(), s => s.ClassNo, c => c.ClassNo, (s, c) => new ClassStudent(s.ClassNo, c.FirstOrDefault()?.ClassName ?? string.Empty, s.StudentName));
+
 
 
 
