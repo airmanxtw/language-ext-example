@@ -16,6 +16,9 @@ public class ValidationExm
     public static Validation<Error, char> IsNum(char c) =>
     c >= 48 && c <= 57 ? Success<Error, char>(c) : Fail<Error, char>(Error.New($"這不是數字(0~9):{c}"));
 
+    public static Validation<Error, IEnumerable<char>> CheckFormat(string s) =>
+    List(IsLetter(s.First())).AsEnumerable().Append(s.Skip(1).Map(IsNum)).Sequence();
+
     public static Validation<Error, char> IsLetter(char c) =>
     pipe(c, v => v.ToString().ToUpper().ToCharArray().First(), Cond<char>(v => v >= 'A' && v <= 'Z').Then(Success<Error, char>).Else(Fail<Error, char>(Error.New($"第一個字不是字母(A~Z):{c}"))));
 
@@ -33,23 +36,20 @@ public class ValidationExm
 
     public static int GetCheckCode(IEnumerable<char> id) => 10 - parseInt(MutilpUniAndSpec(id).Sum().ToString().Last().ToString()).Value();
 
+    public static Validation<Error, string> GetID(int checkCode, string id) =>
+    checkCode.ToString() == id.Last().ToString() ? Success<Error, string>(id) : Fail<Error, string>(Error.New("驗證碼錯誤"));
 
-    public static Either<Seq<Error>, IEnumerable<char>> CheckID(string s) =>
+    public static Either<Seq<Error>, string> CheckID(string s) =>
     (from _ in guard(s.Length == 10, Error.New("長度不是10")).ToValidation()
-     from r in List(IsLetter(s.First())).AsEnumerable().Append(s.Skip(1).Map(IsNum)).Sequence()
-     select r)
+     from r in CheckFormat(s)
+     let c = GetCheckCode(r.Take(9))
+     from id in GetID(c, s)
+     select id)
      .ToEither();
 
-
-    //var result=List(IsLetter(s.First()),IsNum(s.Skip(1).Take(1).First()));
 }
 
-// public static Either<Error, string> IsID(string s)
-// {
-//     var result = guard(s.Length == 10, Error.New("長度不是10")).ToEither()
-//                 .Map(_ => IsLetter(s.First()));
 
-// }
 
 
 

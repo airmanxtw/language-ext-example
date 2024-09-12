@@ -48,8 +48,9 @@ public class ValidationTest
     [TestMethod]
     public void TestMethod1()
     {
+        ValidationExm.CheckID("A123456789").ShouldBeRight(e => Assert.AreEqual("A123456789", e));
         //Assert.AreEqual(52,'4');
-        ValidationExm.CheckID("A123456789").ShouldBeRight(e => Assert.AreEqual("A123456789", string.Concat(e)));
+        //ValidationExm.CheckID("A123456789").ShouldBeRight(e => Assert.AreEqual("A123456789", string.Concat(e)));
         //ValidationExm.CheckID("A123456789").ShouldBeLeft(e=>Assert.AreEqual("這不是數字(0~9)", e.First().Message));
         //ValidationExm.CheckID("A123456789").ShouldBeLeft(e=>Assert.AreEqual(1, e.Length));
         //Assert.AreEqual(10, ValidationExm.GetCode('a'));
