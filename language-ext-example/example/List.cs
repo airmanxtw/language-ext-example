@@ -28,6 +28,15 @@ public class List
 
     public static Func<int[], Option<int>> Sum(Lst<int> d) => curry<Lst<int>, int[], Option<int>>(Sum)(d);
 
+    // List.Case 用例
+    public static string CaseExample() =>
+    List(1, 2, 3, 4, 5).Case switch
+    {
+        1 => "1",
+        (int h, Seq<int> t) => $"{h} {t}",
+        _ => "empty"
+    };
+
 
 
 }
