@@ -15,6 +15,22 @@ public class Demo1
     // 求平方
     public static Option<float> Square(float r) => Some(r * r);
 
+    public int GetTen() => 10;
+    public int GetStrLen(string str) => str.Length;
+
+    public void PrintStr(string str) => System.Console.WriteLine(str);  
+
+    public void PrintAdd(int a, int b) => System.Console.WriteLine(a + b);
+
+
+
+    public double CircleArea(double r) => 3.14159 * System.Math.Pow(r, 2);
+    public static double Multiplication(double a, double b, double c) => a * b * c;
+
+    public dynamic Test = curry<double, double, double, double>(Multiplication)
+
+    public double CylinderArea(double r, double h) => pipe()
+
     public static float Square2(float r) => r * r;
 
     public static Option<float> Square3(float r) =>
@@ -38,6 +54,6 @@ public class Demo1
     public static Option<float> Area3(float r) => Pi().Map(x => Square2(x));
 
 
- 
+
 
 }
