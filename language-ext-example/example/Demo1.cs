@@ -18,9 +18,11 @@ public class Demo1
     public int GetTen() => 10;
     public int GetStrLen(string str) => str.Length;
 
-    public void PrintStr(string str) => System.Console.WriteLine(str);  
+    public void PrintStr(string str) => System.Console.WriteLine(str);
 
     public void PrintAdd(int a, int b) => System.Console.WriteLine(a + b);
+
+    public void Print(int a, int b, Func<int, int, int> f) => f(a, b);
 
 
 
