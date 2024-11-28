@@ -13,7 +13,7 @@ public class TypeTest
     public void TestTint()
     {
         var eqInt = default(EqInt);
-        var eqLst = default(EqLst<int>);
+        //var eqLst = default(EqLst<int>);
         Assert.AreEqual(true, eqInt.Equals(1, 1));
 
     }

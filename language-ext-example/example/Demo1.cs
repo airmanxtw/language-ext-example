@@ -1,6 +1,10 @@
 namespace language_ext_example.example;
 
+using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
+using System.Diagnostics.Contracts;
 using System.Globalization;
+using language_ext_example.example.api.Env;
 using LanguageExt;
 using LanguageExt.ClassInstances;
 using LanguageExt.Common;
@@ -51,6 +55,26 @@ public class Demo1
     public static Option<float> Area2(float r) => Pi().Bind(x => Square(x));
 
     public static Option<float> Area3(float r) => Pi().Map(x => Square2(x));
+
+
+    public static Reader<TestEnv, string> GetEnvValue() => Reader<TestEnv, string>(e => e.GetValue());
+
+
+    public string s = "Hello, World!";
+
+    static int counter = 1;
+
+    [Pure]
+    public static int GetDouble(int x) => counter += x;
+    public static int Go()
+    {
+        return GetDouble(50);
+    }
+
+
+
+
+
 
 
 

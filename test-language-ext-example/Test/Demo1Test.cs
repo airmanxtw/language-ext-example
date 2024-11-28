@@ -11,7 +11,8 @@ public class Demo1Test
 {
     [TestMethod]
     public void Test()
-    {
-        Assert.AreEqual(1, 1);
+    {        
+       
+        Assert.AreEqual(16, Demo1.Go());               
     }
 }
