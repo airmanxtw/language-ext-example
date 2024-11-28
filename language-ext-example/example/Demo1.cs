@@ -29,9 +29,6 @@ public class Demo1
     public double CircleArea(double r) => 3.14159 * System.Math.Pow(r, 2);
     public static double Multiplication(double a, double b, double c) => a * b * c;
 
-    public dynamic Test = curry<double, double, double, double>(Multiplication)
-
-    public double CylinderArea(double r, double h) => pipe()
 
     public static float Square2(float r) => r * r;
 
