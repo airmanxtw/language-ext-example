@@ -58,11 +58,11 @@ public class Demo1
     public static Option<float> Area3(float r) => Pi().Map(x => Square2(x));
 
 
-    public static Reader<TestEnvStruct, string> GetEnvValue() => Reader<TestEnvStruct, string>(e => e.GetValue());
+    public static Reader<ITestEnv, string> GetEnvValue() => Reader<ITestEnv, string>(e => e.GetValue());
 
     public static void Go()
     {
-        var g1 = GetEnvValue().ToEither(default);
+        var g1 = GetEnvValue().ToEither(default(TestEnvStruct));
 
 
         g1.Match(

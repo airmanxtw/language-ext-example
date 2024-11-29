@@ -13,7 +13,7 @@ public record TestEnvRecord
     public string GetValue() => Value;
 }
 
-public readonly struct TestEnvStruct
+public readonly struct TestEnvStruct : ITestEnv
 {
     public string GetValue()
     {        
