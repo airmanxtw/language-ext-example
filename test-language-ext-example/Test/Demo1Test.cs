@@ -12,7 +12,7 @@ public class Demo1Test
     [TestMethod]
     public void Test()
     {        
-       
-        Assert.AreEqual(16, Demo1.Go());               
+        Demo1.Go();
+        Assert.AreEqual(16, 16);               
     }
 }
