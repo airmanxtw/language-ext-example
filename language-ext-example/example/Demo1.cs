@@ -62,6 +62,13 @@ public class Demo1
 
     public static void Go()
     {
+        var t1 = new TestData("Tom", 30);
+        var t2 = new TestData("Aom", 30);
+
+        var t3 = t1 > t2;
+       
+
+
         var g1 = GetEnvValue().ToEither(default(TestEnvStruct));
 
 
