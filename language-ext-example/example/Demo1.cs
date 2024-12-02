@@ -59,6 +59,7 @@ public class Demo1
 
 
     public static Reader<ITestEnv, string> GetEnvValue() => Reader<ITestEnv, string>(e => e.GetValue());
+    public static Reader<Func<int, int>, int> GetReader(int a) => Reader<Func<int, int>, int>(f => f(a));
 
     public static void Go()
     {
@@ -66,10 +67,11 @@ public class Demo1
         var t2 = new TestData("Aom", 30);
 
         var t3 = t1 > t2;
-       
 
 
         var g1 = GetEnvValue().ToEither(default(TestEnvStruct));
+
+        var g2 = GetReader(10).ToEither((int x) => x + 1);
 
 
         g1.Match(
@@ -77,7 +79,7 @@ public class Demo1
          Left: e => Console.WriteLine(e.Message)
         );
 
-        g1.Match(
+        g2.Match(
          Right: Console.WriteLine,
          Left: e => Console.WriteLine(e.Message)
         );
