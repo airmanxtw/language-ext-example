@@ -61,12 +61,16 @@ public class Demo1
     public static Reader<ITestEnv, string> GetEnvValue() => Reader<ITestEnv, string>(e => e.GetValue());
     public static Reader<Func<int, int>, int> GetReader(int a) => Reader<Func<int, int>, int>(f => f(a));
 
+    public static State<int, int> GetState(int a) => State<int, int>(f => (a + 1, a));
+
     public static void Go()
     {
         var t1 = new TestData("Tom", 30);
         var t2 = new TestData("Aom", 30);
 
         var t3 = t1 > t2;
+
+        var s1 = GetState(10).Bind(put);
 
 
         var g1 = GetEnvValue().ToEither(default(TestEnvStruct));
