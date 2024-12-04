@@ -67,7 +67,7 @@ public class Demo1
 
     public static Lens<int, int> GetLens => Lens<int, int>.New(x => x + 1, y => x => y - x);
 
-    public static State<int,int> GetState2 => get(GetLens);
+    public static State<int, int> GetState2 => get(GetLens);
 
 
     public static int AddMethod(int a, int b) => a + b;
@@ -81,18 +81,18 @@ public class Demo1
         var x2 = GetState2.Run(1);
 
 
-        var x = Lens.fst<int, int>();
+        //var x = Lens.fst<int, int>();
         // var y = x.Get((9, 2));
         // var z = x.Set(2, (9, 2));
 
-        var t = x.Update(x => x + 1);
+        //var t = x.Update(x => x + 1);
 
         var t1 = new TestData("Tom", 30);
         var t2 = new TestData("Aom", 30);
 
         var t3 = t1 > t2;
 
-        var n = Lens.fst<int, int>;
+        //var n = Lens.fst<int, int>;
 
 
 
