@@ -12,6 +12,7 @@ public class Demo1Test
     [TestMethod]
     public void Test()
     {        
+        var s = MyPure.Inst.Add(1,2);
         Demo1.Go();
         Assert.AreEqual(16, 16);               
     }

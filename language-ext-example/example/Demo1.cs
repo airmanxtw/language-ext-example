@@ -4,12 +4,14 @@ using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
 using System.Diagnostics.Contracts;
 using System.Globalization;
+using System.Security.Cryptography;
 using language_ext_example.example.api.Env;
 using language_ext_example.example.api.Env.Interface;
 using LanguageExt;
 using LanguageExt.ClassInstances;
 using LanguageExt.Common;
 using LanguageExt.Pretty;
+using Microsoft.VisualBasic;
 using static LanguageExt.Prelude;
 
 public class Demo1
@@ -61,16 +63,50 @@ public class Demo1
     public static Reader<ITestEnv, string> GetEnvValue() => Reader<ITestEnv, string>(e => e.GetValue());
     public static Reader<Func<int, int>, int> GetReader(int a) => Reader<Func<int, int>, int>(f => f(a));
 
-    public static State<int, int> GetState(int a) => State<int, int>(f => (a + 1, a));
+    public static State<int, int> GetState => State<int, int>(f => (f + 1, f));
+
+    public static Lens<int, int> GetLens => Lens<int, int>.New(x => x + 1, y => x => y - x);
+
+    public static State<int,int> GetState2 => get(GetLens);
+
+
+    public static int AddMethod(int a, int b) => a + b;
+
 
     public static void Go()
     {
+        var x0 = Lens<int, int>.New(x => x, x => x => x + 1);
+        var x1 = x0.Get(1);
+
+        var x2 = GetState2.Run(1);
+
+
+        var x = Lens.fst<int, int>();
+        // var y = x.Get((9, 2));
+        // var z = x.Set(2, (9, 2));
+
+        var t = x.Update(x => x + 1);
+
         var t1 = new TestData("Tom", 30);
         var t2 = new TestData("Aom", 30);
 
         var t3 = t1 > t2;
 
-        var s1 = GetState(10).Bind(put);
+        var n = Lens.fst<int, int>;
+
+
+
+
+
+        var s1 = GetState.Run(10).Value;
+
+
+
+        var fff = pipe((1, 2), t => AddMethod(t.Item1, t.Item2));
+        // 解構 data1
+
+
+
 
 
         var g1 = GetEnvValue().ToEither(default(TestEnvStruct));
