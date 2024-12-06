@@ -1,5 +1,5 @@
 namespace language_ext_example.example;
-public class BirdsExample
+public struct BirdsExample
 {
     public static Func<int, int> IF(Func<int, bool> COND, Func<int, int> THEN, Func<int, int> ELSE) =>
         (int v) => COND(v) ? THEN(v) : ELSE(v);
