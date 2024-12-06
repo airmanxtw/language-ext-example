@@ -11,9 +11,10 @@ public class Demo1Test
 {
     [TestMethod]
     public void Test()
-    {        
-        var s = MyPure.Inst.Add(1,2);
+    {
+        var a = Birds.ABS(-1);
+        var s = MyPure.Inst.Add(1, 2);
         Demo1.Go();
-        Assert.AreEqual(16, 16);               
+        Assert.AreEqual(16, 16);
     }
 }

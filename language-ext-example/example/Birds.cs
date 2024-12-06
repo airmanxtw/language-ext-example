@@ -13,6 +13,22 @@ public class Birds
 
     public static int SimPipe2(int a, Func<int, int> f1) => Combinators<int, int>.T(a)(f1);
 
+    public static Func<int, int> IF(Func<int, bool> COND, Func<int, int> THEN, Func<int, int> ELSE) =>
+        (int v) => COND(v) ? THEN(v) : ELSE(v);
+
+    public static bool ISMORETHENZERO(int a) => a >= 0;
+    public static int IdiotBird(int a) => a;
+
+    public static Func<Func<int, int>, Func<int, int>> Mockingbird =
+    (Func<int, int> f) => (int x) => f(f(x));
+
+
+
+    // 絕對值
+    public static int ABS(int a) => IF(x => x >= 0, x => x, x => -x).Invoke(a);
+
+    public static int ABSBirds(int a) => IF(ISMORETHENZERO, IdiotBird, Mockingbird(x => -x)).Invoke(a);
+
     public static void Test(int a, Func<int, int> f1, Func<int, int> f2)
     {
         var resultI = Combinators<int>.I(1);
@@ -26,7 +42,7 @@ public class Birds
 
         var resultIK = Prelude.pipe(Combinators<int>.I(1), Combinators<int, int>.K(2));
 
-        
+
 
 
 
