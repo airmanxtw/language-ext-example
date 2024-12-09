@@ -65,6 +65,14 @@ public class Demo1
 
     public static State<int, int> GetState => State<int, int>(f => (f + 1, f));
 
+    public static State<Func<int, int>, int> GetState0(int a) =>
+    State<Func<int, int>, int>(f => (f(a), (int x) => f(a) + x));
+
+    public static State<Stck<int>, Stck<int>> PutStack(int a) =>
+    State<Stck<int>, Stck<int>>(f => (f.Push(a), f));
+
+    // (1,(int x)=>1+x) -> (2,(int x)=>2+x) => (4,(int x)=>4+x) => (8,(int x)=>8+x)
+
     public static Lens<int, int> GetLens => Lens<int, int>.New(x => x + 1, y => x => y - x);
 
     public static State<int, int> GetState2 => get(GetLens);
@@ -78,7 +86,8 @@ public class Demo1
         var x0 = Lens<int, int>.New(x => x, x => x => x + 1);
         var x1 = x0.Get(1);
 
-        var x2 = GetState2.Run(1);
+        var x2 = GetState0(0).Bind(GetState0).Bind(GetState0).Run((int x) => x + 1).Value.ToOption();
+        var x3 = PutStack(1).Bind(s => put(s).Bind(_ => PutStack(3))).Run(Stck<int>.Empty).Value.ToOption();
 
 
         //var x = Lens.fst<int, int>();
