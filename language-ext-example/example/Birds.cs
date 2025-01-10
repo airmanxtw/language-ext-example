@@ -1,6 +1,8 @@
 using System.Security.Cryptography.X509Certificates;
 using LanguageExt;
-using LanguageExt.Pipes;
+using static LanguageExt.Prelude;
+
+
 
 namespace language_ext_example.example;
 public class Birds
@@ -30,8 +32,13 @@ public class Birds
     public static int ABSBirds(int a) => IF(ISMORETHENZERO, IdiotBird, Mockingbird(x => -x)).Invoke(a);
 
     public static Func<int, int> Fix(Func<Func<int, int>, Func<int, int>> f) => x => f(Fix(f))(x);
+    public static Func<int, int> FixY => Combinators<int, int, int>.Y((f, x) => x <= 1 ? 1 : x * f(x - 1));
 
     public static Func<int, int, int> Fix(Func<Func<int, int, int>, Func<int, int, int>> f) => (x, y) => f(Fix(f))(x, y);
+
+    
+
+
 
     public static void Test(int a, Func<int, int> f1, Func<int, int> f2)
     {
