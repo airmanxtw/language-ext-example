@@ -29,6 +29,10 @@ public class Birds
 
     public static int ABSBirds(int a) => IF(ISMORETHENZERO, IdiotBird, Mockingbird(x => -x)).Invoke(a);
 
+    public static Func<int, int> Fix(Func<Func<int, int>, Func<int, int>> f) => x => f(Fix(f))(x);
+
+    public static Func<int, int, int> Fix(Func<Func<int, int, int>, Func<int, int, int>> f) => (x, y) => f(Fix(f))(x, y);
+
     public static void Test(int a, Func<int, int> f1, Func<int, int> f2)
     {
         var resultI = Combinators<int>.I(1);
@@ -41,6 +45,8 @@ public class Birds
         var resultK = Combinators<bool, bool>.K(true)(false);
 
         var resultIK = Prelude.pipe(Combinators<int>.I(1), Combinators<int, int>.K(2));
+
+        var resultFix = Fix(f => x => x <= 1 ? 1 : x * f(x - 1))(3);
 
 
 
