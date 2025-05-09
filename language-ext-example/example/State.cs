@@ -7,4 +7,5 @@ public class State
 {
     public static State<int, int> DepositMoeney(int amount) => State<int, int>(s => (s, s + amount));
     public static State<int, int> WithdrawMoney(int amount) => State<int, int>(s => (s, s - amount));
+    public static State<int, int> InterestCalculation(float rate) => State<int, int>(s => (s, s + (int)(s * rate)));
 }
