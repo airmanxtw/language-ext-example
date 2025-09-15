@@ -12,4 +12,7 @@ public class Reader
     public static Reader<TestEnvStruct, string> GetEnvValue() => Prelude.Reader<TestEnvStruct, string>(e => e.GetValue());
 
     public static Reader<Func<int, int>, int> GetReader(int a) => Prelude.Reader<Func<int, int>, int>(f => f(a));
+
+
+
 }
