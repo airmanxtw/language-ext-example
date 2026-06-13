@@ -4,7 +4,7 @@ using language_ext_example.example;
 using LanguageExt;
 
 
-
+var result = language_ext_example.example.State.CalculateAreaOfCircle(10);
 
 Console.WriteLine("Hello, World!");
 
