@@ -15,11 +15,12 @@ public class State
 
     public static TryOption<float> CalculateAreaOfCircle(int radius)
     {
-        var areaState = Pi.Bind<int, float, float>(p => Square);
+        return null;
+        // var areaState = Pi.Bind<int, float, float>(p => Square);
 
-        var s = areaState.Run(radius);
+        // var s = areaState.Run(radius);
 
-        return s.Value;
+        // return s.Value;
     }
 
 }

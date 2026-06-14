@@ -17,6 +17,9 @@ public class EitherExample
     public static Either<string, Option<int>> Add(int a, int b) =>
         Either<string, Option<int>>.Right(Some(a + b));
 
+    public static Option<Option<int>> Add2(int a, int b) =>
+        Some(Some(a + b));
+
     public static void Run()
     {
         var solution1 = from x in Add(1, 2)
@@ -30,6 +33,10 @@ public class EitherExample
                                 from b in y
                                 select a + b
                         select z;
+
+
+
+
 
     }
 
