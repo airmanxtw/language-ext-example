@@ -21,7 +21,7 @@ public class EitherExample
     {
         var solution1 = from x in Add(1, 2)
                         from y in Add(3, 4)
-                        let z = Prelude.apply((a, b) => a + b, x, y)
+                        let z = apply((a, b) => a + b, x, y)
                         select z;
 
         var solution2 = from x in Add(1, 2)
