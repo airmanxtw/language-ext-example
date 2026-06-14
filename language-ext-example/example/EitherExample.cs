@@ -19,10 +19,17 @@ public class EitherExample
 
     public static void Run()
     {
-        var result = from x in Add(1, 2)
-                     from y in Add(3, 4)
-                     let z = Prelude.apply((a, b) => a + b, x, y)
-                     select z;
+        var solution1 = from x in Add(1, 2)
+                        from y in Add(3, 4)
+                        let z = Prelude.apply((a, b) => a + b, x, y)
+                        select z;
+
+        var solution2 = from x in Add(1, 2)
+                        from y in Add(3, 4)
+                        let z = from a in x
+                                from b in y
+                                select a + b
+                        select z;
 
     }
 
