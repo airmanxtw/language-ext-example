@@ -17,8 +17,12 @@ public class EitherExample
     public static Either<string, Option<int>> Add(int a, int b) =>
         Either<string, Option<int>>.Right(Some(a + b));
 
-    public void Run()
+    public static void Run()
     {
+        var result = from x in Add(1, 2)
+                     from y in Add(3, 4)
+                     let z = Prelude.apply((a, b) => a + b, x, y)
+                     select z;
 
     }
 
